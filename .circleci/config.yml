@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14  # Usamos una imagen Docker con Node.js 14
+    steps:
+      - checkout  # Revisa el código fuente del repositorio
+      - run: npm install  # Instala las dependencias del proyecto
+      - run: npm test  # Ejecuta las pruebas automatizadas
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build  # Ejecuta el trabajo de compilación y pruebas
